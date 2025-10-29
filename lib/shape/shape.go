@@ -28,6 +28,19 @@ const (
 	HEXAGON_TYPE       = "Hexagon"
 	CLOUD_TYPE         = "Cloud"
 
+	// Flowchart (FIPS PUB 24, ISO-5807)
+	PREDEFINED_PROCESS_TYPE = "PredefinedProcess"
+	DISPLAY_TYPE            = "Display"
+	MANUAL_OPERATION_TYPE   = "ManualOperation"
+	DELAY_TYPE              = "Delay"
+	INTERNAL_STORAGE_TYPE   = "InternalStorage"
+	MERGE_TYPE              = "Merge"
+	EXTRACT_TYPE            = "Extract"
+	COLLATE_TYPE            = "Collate"
+	SORT_TYPE               = "Sort"
+	OR_TYPE                 = "Or"
+	SUMMING_JUNCTION_TYPE   = "SummingJunction"
+
 	TABLE_TYPE = "Table"
 	CLASS_TYPE = "Class"
 	TEXT_TYPE  = "Text"
@@ -172,6 +185,30 @@ func NewShape(shapeType string, box *geo.Box) Shape {
 		return NewTable(box)
 	case TEXT_TYPE:
 		return NewText(box)
+
+	// Flowchart (FIPS PUB 24, ISO-5807)
+	case PREDEFINED_PROCESS_TYPE:
+		return NewPredefinedProcess(box)
+	case DISPLAY_TYPE:
+		return NewDisplay(box)
+	case MANUAL_OPERATION_TYPE:
+		return NewManualOperation(box)
+	case DELAY_TYPE:
+		return NewDelay(box)
+	case INTERNAL_STORAGE_TYPE:
+		return NewInternalStorage(box)
+	case MERGE_TYPE:
+		return NewMerge(box)
+	case EXTRACT_TYPE:
+		return NewExtract(box)
+	case COLLATE_TYPE:
+		return NewCollate(box)
+	case SORT_TYPE:
+		return NewSort(box)
+	case OR_TYPE:
+		return NewCircle(box)
+	case SUMMING_JUNCTION_TYPE:
+		return NewSummingJunction(box)
 
 	default:
 		shape := shapeSquare{

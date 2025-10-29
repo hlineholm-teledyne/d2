@@ -1048,31 +1048,43 @@ func NewPoint(x, y int) Point {
 }
 
 const (
-	ShapeRectangle       = "rectangle"
-	ShapeSquare          = "square"
-	ShapePage            = "page"
-	ShapeParallelogram   = "parallelogram"
-	ShapeDocument        = "document"
-	ShapeCylinder        = "cylinder"
-	ShapeQueue           = "queue"
-	ShapePackage         = "package"
-	ShapeStep            = "step"
-	ShapeCallout         = "callout"
-	ShapeStoredData      = "stored_data"
-	ShapePerson          = "person"
-	ShapeC4Person        = "c4-person"
-	ShapeDiamond         = "diamond"
-	ShapeOval            = "oval"
-	ShapeCircle          = "circle"
-	ShapeHexagon         = "hexagon"
-	ShapeCloud           = "cloud"
-	ShapeText            = "text"
-	ShapeCode            = "code"
-	ShapeClass           = "class"
-	ShapeSQLTable        = "sql_table"
-	ShapeImage           = "image"
-	ShapeSequenceDiagram = "sequence_diagram"
-	ShapeHierarchy       = "hierarchy"
+	ShapeRectangle         = "rectangle"
+	ShapeSquare            = "square"
+	ShapePage              = "page"
+	ShapeParallelogram     = "parallelogram"
+	ShapeDocument          = "document"
+	ShapeCylinder          = "cylinder"
+	ShapeQueue             = "queue"
+	ShapePackage           = "package"
+	ShapeStep              = "step"
+	ShapeCallout           = "callout"
+	ShapeStoredData        = "stored_data"
+	ShapePerson            = "person"
+	ShapeC4Person          = "c4-person"
+	ShapeDiamond           = "diamond"
+	ShapeOval              = "oval"
+	ShapeCircle            = "circle"
+	ShapeHexagon           = "hexagon"
+	ShapeCloud             = "cloud"
+	ShapeProcess           = "process"
+	ShapePredefinedProcess = "predefined_process"
+	ShapeDisplay           = "display"
+	ShapeManualOperation   = "manual_operation"
+	ShapeDelay             = "delay"
+	ShapeInternalStorage   = "internal_storage"
+	ShapeMerge             = "merge"
+	ShapeExtract           = "extract"
+	ShapeCollate           = "collate"
+	ShapeSort              = "sort"
+	ShapeOr                = "or"
+	ShapeSummingJunction   = "summing_junction"
+	ShapeText              = "text"
+	ShapeCode              = "code"
+	ShapeClass             = "class"
+	ShapeSQLTable          = "sql_table"
+	ShapeImage             = "image"
+	ShapeSequenceDiagram   = "sequence_diagram"
+	ShapeHierarchy         = "hierarchy"
 )
 
 var Shapes = []string{
@@ -1094,6 +1106,18 @@ var Shapes = []string{
 	ShapeCircle,
 	ShapeHexagon,
 	ShapeCloud,
+	ShapeProcess,
+	ShapePredefinedProcess,
+	ShapeDisplay,
+	ShapeManualOperation,
+	ShapeDelay,
+	ShapeInternalStorage,
+	ShapeMerge,
+	ShapeExtract,
+	ShapeCollate,
+	ShapeSort,
+	ShapeOr,
+	ShapeSummingJunction,
 	ShapeText,
 	ShapeCode,
 	ShapeClass,
@@ -1145,32 +1169,44 @@ func (text MText) GetColor(isItalic bool) string {
 }
 
 var DSL_SHAPE_TO_SHAPE_TYPE = map[string]string{
-	"":                   shape.SQUARE_TYPE,
-	ShapeRectangle:       shape.SQUARE_TYPE,
-	ShapeSquare:          shape.REAL_SQUARE_TYPE,
-	ShapePage:            shape.PAGE_TYPE,
-	ShapeParallelogram:   shape.PARALLELOGRAM_TYPE,
-	ShapeDocument:        shape.DOCUMENT_TYPE,
-	ShapeCylinder:        shape.CYLINDER_TYPE,
-	ShapeQueue:           shape.QUEUE_TYPE,
-	ShapePackage:         shape.PACKAGE_TYPE,
-	ShapeStep:            shape.STEP_TYPE,
-	ShapeCallout:         shape.CALLOUT_TYPE,
-	ShapeStoredData:      shape.STORED_DATA_TYPE,
-	ShapePerson:          shape.PERSON_TYPE,
-	ShapeC4Person:        shape.C4_PERSON_TYPE,
-	ShapeDiamond:         shape.DIAMOND_TYPE,
-	ShapeOval:            shape.OVAL_TYPE,
-	ShapeCircle:          shape.CIRCLE_TYPE,
-	ShapeHexagon:         shape.HEXAGON_TYPE,
-	ShapeCloud:           shape.CLOUD_TYPE,
-	ShapeText:            shape.TEXT_TYPE,
-	ShapeCode:            shape.CODE_TYPE,
-	ShapeClass:           shape.CLASS_TYPE,
-	ShapeSQLTable:        shape.TABLE_TYPE,
-	ShapeImage:           shape.IMAGE_TYPE,
-	ShapeSequenceDiagram: shape.SQUARE_TYPE,
-	ShapeHierarchy:       shape.SQUARE_TYPE,
+	"":                     shape.SQUARE_TYPE,
+	ShapeRectangle:         shape.SQUARE_TYPE,
+	ShapeSquare:            shape.REAL_SQUARE_TYPE,
+	ShapePage:              shape.PAGE_TYPE,
+	ShapeParallelogram:     shape.PARALLELOGRAM_TYPE,
+	ShapeDocument:          shape.DOCUMENT_TYPE,
+	ShapeCylinder:          shape.CYLINDER_TYPE,
+	ShapeQueue:             shape.QUEUE_TYPE,
+	ShapePackage:           shape.PACKAGE_TYPE,
+	ShapeStep:              shape.STEP_TYPE,
+	ShapeCallout:           shape.CALLOUT_TYPE,
+	ShapeStoredData:        shape.STORED_DATA_TYPE,
+	ShapePerson:            shape.PERSON_TYPE,
+	ShapeC4Person:          shape.C4_PERSON_TYPE,
+	ShapeDiamond:           shape.DIAMOND_TYPE,
+	ShapeOval:              shape.OVAL_TYPE,
+	ShapeCircle:            shape.CIRCLE_TYPE,
+	ShapeHexagon:           shape.HEXAGON_TYPE,
+	ShapeCloud:             shape.CLOUD_TYPE,
+	ShapeProcess:           shape.SQUARE_TYPE,
+	ShapePredefinedProcess: shape.PREDEFINED_PROCESS_TYPE,
+	ShapeDisplay:           shape.DISPLAY_TYPE,
+	ShapeManualOperation:   shape.MANUAL_OPERATION_TYPE,
+	ShapeDelay:             shape.DELAY_TYPE,
+	ShapeInternalStorage:   shape.INTERNAL_STORAGE_TYPE,
+	ShapeMerge:             shape.MERGE_TYPE,
+	ShapeExtract:           shape.EXTRACT_TYPE,
+	ShapeCollate:           shape.COLLATE_TYPE,
+	ShapeSort:              shape.SORT_TYPE,
+	ShapeOr:                shape.CIRCLE_TYPE,
+	ShapeSummingJunction:   shape.SUMMING_JUNCTION_TYPE,
+	ShapeText:              shape.TEXT_TYPE,
+	ShapeCode:              shape.CODE_TYPE,
+	ShapeClass:             shape.CLASS_TYPE,
+	ShapeSQLTable:          shape.TABLE_TYPE,
+	ShapeImage:             shape.IMAGE_TYPE,
+	ShapeSequenceDiagram:   shape.SQUARE_TYPE,
+	ShapeHierarchy:         shape.SQUARE_TYPE,
 }
 
 var SHAPE_TYPE_TO_DSL_SHAPE map[string]string
